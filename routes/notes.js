@@ -15,7 +15,7 @@ notes.get('/', (req, res) => {
 })
 
 // GET Route for a specific note by id parameter
-notes.get('/:note_id', (req, res) => {
+notes.get('/:id', (req, res) => {
   const noteId = req.params.id;
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
@@ -27,22 +27,22 @@ notes.get('/:note_id', (req, res) => {
     });
 });
 
-// notes.delete('/:note_id', (req, res) => {
-//     console.log(req.params)
-//   const noteId = req.params.note_id;
-//   readFromFile('./db/db.json')
-//     .then((data) => JSON.parse(data))
-//     .then((json) => {
-//       // Make a new array of all notes except the one with the ID provided in the URL
-//       const result = notesArray.filter((note) => note.note_id !== noteId);
+notes.delete('/:id', (req, res) => {
+    console.log(req.params)
+  const noteId = req.params.id;
+  readFromFile('./db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      // Make a new array of all notes except the one with the ID provided in the URL
+      const result = notesArray.filter((note) => note.id !== noteId);
 
-//       // Save that array to the filesystem
-//       writeToFile('./db/db.json', result);
+      // Save that array to the filesystem
+      writeToFile('./db/db.json', result);
 
-//       // Respond to the DELETE request
-//       res.json(`Item ${noteId} has been deleted 🗑️`);
-//     });
-// });
+      // Respond to the DELETE request
+      res.json(`Item ${noteId} has been deleted 🗑️`);
+    });
+});
 
 // post method to add note in req.body to the notes array in db.json
 notes.post('/', (req, res) => {
