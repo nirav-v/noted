@@ -2,7 +2,7 @@
 
 Noted is a server side application that allows users to add and remove notes from a note-board display, and have that list updated and persisted on a locally hosted server. It connects the front end user interface to the backend server using Express.js establish the routes for creating and deleting notes on the database, and retrieving that updated database to display on the page. 
 
-Deployed Application: https://rocky-tor-66219.herokuapp.com/notes
+Deployed Application: https://rocky-tor-66219.herokuapp.com
 
 Instructions for use:
 
